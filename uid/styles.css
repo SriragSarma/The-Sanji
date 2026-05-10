@@ -1,0 +1,783 @@
+/* The Sanji - styles.css */
+/* Dark navy and yellow color scheme */
+
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #060d1f;
+  color: #e8edf8;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+button {
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+/* Page show/hide system */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ---- NAVBAR ---- */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: #0b1630;
+  border-bottom: 2px solid #f5c518;
+  z-index: 999;
+}
+
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #f5c518;
+}
+
+#navLinks {
+  display: flex;
+  gap: 24px;
+}
+
+#navLinks a {
+  color: #8fa0cc;
+  font-size: 0.95rem;
+}
+
+#navLinks a:hover {
+  color: #f5c518;
+}
+
+#hamburger {
+  display: none;
+  background: none;
+  border: 1px solid #f5c518;
+  color: #f5c518;
+  font-size: 1.2rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* ---- SECTION ---- */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.section-top h2 {
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.section-top a {
+  color: #f5c518;
+  font-size: 0.9rem;
+}
+
+.dark-bg {
+  background-color: #0b1630;
+}
+
+/* ---- HERO ---- */
+.hero {
+  padding: 120px 20px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.4rem;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: 1rem;
+  color: #8fa0cc;
+  margin-bottom: 24px;
+}
+
+.hero-search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 8px;
+}
+
+.hero-search input {
+  width: 300px;
+  padding: 10px 14px;
+  border: 1px solid #1e2f5a;
+  border-radius: 4px;
+  background-color: #0f1e3d;
+  color: #e8edf8;
+  font-size: 0.95rem;
+}
+
+.hero-search button {
+  padding: 10px 20px;
+  background-color: #f5c518;
+  color: #060d1f;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: bold;
+}
+
+.hero-search button:hover {
+  background-color: #c9a100;
+}
+
+.hero-tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-tags button {
+  padding: 8px 16px;
+  background-color: #0f1e3d;
+  color: #8fa0cc;
+  border: 1px solid #1e2f5a;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.hero-tags button:hover {
+  background-color: #f5c518;
+  color: #060d1f;
+  border-color: #f5c518;
+}
+
+/* ---- RECIPE GRID ---- */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.recipe-card {
+  background-color: #0f1e3d;
+  border: 1px solid #1e2f5a;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.recipe-card:hover {
+  border-color: #f5c518;
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.card-body {
+  padding: 14px;
+}
+
+.card-body h3 {
+  font-size: 1rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.card-meta {
+  font-size: 0.82rem;
+  color: #8fa0cc;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cat-label {
+  font-size: 0.72rem;
+  color: #f5c518;
+  background-color: #060d1f;
+  border: 1px solid #f5c518;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* Difficulty labels */
+.diff-easy {
+  color: #4ade80;
+}
+
+.diff-medium {
+  color: #fbbf24;
+}
+
+.diff-hard {
+  color: #f87171;
+}
+
+/* ---- CATEGORY CARDS ---- */
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+}
+
+.cat-card {
+  background-color: #0f1e3d;
+  border: 1px solid #1e2f5a;
+  border-radius: 8px;
+  padding: 24px 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.cat-card:hover {
+  border-color: #f5c518;
+}
+
+.cat-emoji {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.cat-card h3 {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.cat-card p {
+  font-size: 0.78rem;
+  color: #6b7db3;
+}
+
+/* ---- QUOTE BAR ---- */
+.quote-bar {
+  background-color: #0b1630;
+  border-top: 1px solid #1e2f5a;
+  border-bottom: 1px solid #1e2f5a;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.quote-bar p {
+  font-size: 1.5rem;
+  color: #f5c518;
+  font-style: italic;
+}
+
+/* ---- PAGE TOP BAR ---- */
+.page-top-bar {
+  background-color: #0b1630;
+  border-bottom: 1px solid #1e2f5a;
+  padding: 80px 20px 40px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+.page-top-bar h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.page-top-bar p {
+  color: #8fa0cc;
+  font-size: 0.95rem;
+}
+
+/* ---- FILTER BOX ---- */
+.filter-box {
+  background-color: #0f1e3d;
+  border: 1px solid #1e2f5a;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-label {
+  font-size: 0.82rem;
+  color: #6b7db3;
+  min-width: 80px;
+}
+
+.chip {
+  padding: 6px 14px;
+  background-color: #111f40;
+  color: #8fa0cc;
+  border: 1px solid #1e2f5a;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: #f5c518;
+  color: #f5c518;
+}
+
+.chip.active {
+  background-color: #f5c518;
+  color: #060d1f;
+  border-color: #f5c518;
+  font-weight: bold;
+}
+
+.filter-row input {
+  padding: 8px 12px;
+  background-color: #111f40;
+  border: 1px solid #1e2f5a;
+  border-radius: 4px;
+  color: #e8edf8;
+  font-size: 0.9rem;
+  width: 240px;
+}
+
+.filter-row input:focus {
+  outline: none;
+  border-color: #f5c518;
+}
+
+#resultsCount {
+  font-size: 0.85rem;
+  color: #6b7db3;
+  margin-bottom: 16px;
+}
+
+/* ---- SINGLE RECIPE PAGE ---- */
+.detail-hero-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 0;
+  margin-top: 60px;
+}
+
+.detail-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.back-btn {
+  color: #f5c518;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.detail-title {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.detail-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.meta-pill {
+  background-color: #0f1e3d;
+  border: 1px solid #1e2f5a;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  color: #8fa0cc;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+}
+
+.ingredients-box {
+  background-color: #0f1e3d;
+  border: 1px solid #1e2f5a;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.ingredients-box h3 {
+  color: #f5c518;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1e2f5a;
+  font-size: 1.1rem;
+}
+
+.ing-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #1e2f5a;
+  font-size: 0.9rem;
+  color: #e8edf8;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.ing-item:last-child {
+  border-bottom: none;
+}
+
+.ing-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #f5c518;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.steps-box h3 {
+  color: #ffffff;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #1e2f5a;
+  font-size: 1.1rem;
+}
+
+.step-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.step-num {
+  background-color: #f5c518;
+  color: #060d1f;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.step-text {
+  font-size: 0.92rem;
+  color: #e8edf8;
+  line-height: 1.7;
+  padding-top: 4px;
+}
+
+/* ---- ABOUT PAGE ---- */
+.about-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.about-text h2 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.about-text p {
+  color: #8fa0cc;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+.about-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.about-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #1e2f5a;
+  color: #e8edf8;
+  font-size: 0.9rem;
+}
+
+.about-image {
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #1e2f5a;
+}
+
+.about-badge {
+  position: absolute;
+  bottom: 16px;
+  right: -10px;
+  background-color: #f5c518;
+  color: #060d1f;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* ---- CONTACT PAGE ---- */
+.contact-box {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.contact-info h2 {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.contact-info p {
+  color: #8fa0cc;
+  font-size: 0.92rem;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.contact-form {
+  background-color: #0f1e3d;
+  border: 1px solid #1e2f5a;
+  border-radius: 8px;
+  padding: 28px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  color: #6b7db3;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  background-color: #111f40;
+  border: 1px solid #1e2f5a;
+  border-radius: 4px;
+  color: #e8edf8;
+  font-size: 0.92rem;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #f5c518;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #f5c518;
+  color: #060d1f;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #c9a100;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  background-color: #0b1630;
+  border-top: 1px solid #1e2f5a;
+  padding: 32px 20px;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #f5c518;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #8fa0cc;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #f5c518;
+}
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #6b7db3;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #1e2f5a;
+}
+
+/* ---- EMPTY STATE ---- */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  grid-column: 1 / -1;
+}
+
+.empty-state p {
+  color: #6b7db3;
+  font-size: 1rem;
+}
+
+/* ---- MOBILE ---- */
+@media (max-width: 768px) {
+  #navLinks {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: #0b1630;
+    padding: 16px 20px;
+    border-bottom: 1px solid #1e2f5a;
+    gap: 0;
+  }
+
+  #navLinks.open {
+    display: flex;
+  }
+
+  #navLinks li a {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid #1e2f5a;
+    font-size: 1rem;
+  }
+
+  #hamburger {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-search {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-search input {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .about-box,
+  .contact-box,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-badge {
+    right: 0;
+  }
+
+  .filter-row input {
+    width: 100%;
+  }
+}

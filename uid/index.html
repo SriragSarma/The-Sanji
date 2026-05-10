@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Sanji - Recipe Website</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="logo">🍛 The Sanji</span>
+      <ul id="navLinks">
+        <li><a href="#" onclick="showPage('home')">Home</a></li>
+        <li><a href="#" onclick="showPage('recipes')">Recipes</a></li>
+        <li><a href="#" onclick="showPage('about')">About</a></li>
+        <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+      </ul>
+      <button id="hamburger" onclick="toggleMenu()">&#9776;</button>
+    </div>
+  </nav>
+
+  <!-- ===== HOME PAGE ===== -->
+  <div id="page-home" class="page active">
+
+    <!-- Hero -->
+    <div class="hero">
+      <h1>Find Your Next Favorite Dish</h1>
+      <p>Simple South Indian recipes for everyday cooking.</p>
+      <div class="hero-search">
+        <input type="text" id="heroSearch" placeholder="Search recipes..." />
+        <button onclick="doHeroSearch()">Search</button>
+      </div>
+      <div class="hero-tags">
+        <button onclick="filterCategory('Veg')">Veg</button>
+        <button onclick="filterCategory('Non-Veg')">Non-Veg</button>
+        <button onclick="filterCategory('Snacks')">Snacks</button>
+        <button onclick="filterCategory('Desserts')">Desserts</button>
+      </div>
+    </div>
+
+    <!-- Trending Recipes -->
+    <div class="section">
+      <div class="section-top">
+        <h2>Trending Recipes</h2>
+        <a href="#" onclick="showPage('recipes')">See All</a>
+      </div>
+      <div class="recipe-grid" id="trendingGrid"></div>
+    </div>
+
+    <!-- Categories -->
+    <div class="section dark-bg">
+      <h2>Browse by Category</h2>
+      <br>
+      <div class="category-cards">
+        <div class="cat-card" onclick="filterCategory('Veg')">
+          <div class="cat-emoji">🥦</div>
+          <h3>Vegetarian</h3>
+          <p>Fresh and healthy</p>
+        </div>
+        <div class="cat-card" onclick="filterCategory('Non-Veg')">
+          <div class="cat-emoji">🍗</div>
+          <h3>Non-Veg</h3>
+          <p>Meaty and delicious</p>
+        </div>
+        <div class="cat-card" onclick="filterCategory('Snacks')">
+          <div class="cat-emoji">🥨</div>
+          <h3>Snacks</h3>
+          <p>Quick bites</p>
+        </div>
+        <div class="cat-card" onclick="filterCategory('Desserts')">
+          <div class="cat-emoji">🍮</div>
+          <h3>Desserts</h3>
+          <p>Sweet treats</p>
+        </div>
+        <div class="cat-card" onclick="filterCategory('Breakfast')">
+          <div class="cat-emoji">🍳</div>
+          <h3>Breakfast</h3>
+          <p>Start your day</p>
+        </div>
+        <div class="cat-card" onclick="filterCategory('Drinks')">
+          <div class="cat-emoji">🥤</div>
+          <h3>Drinks</h3>
+          <p>Refresh yourself</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quote -->
+    <div class="quote-bar">
+      <p>"God creates Food & Devil creates the Spices."</p>
+    </div>
+
+  </div>
+
+  <!-- ===== RECIPES PAGE ===== -->
+  <div id="page-recipes" class="page">
+
+    <div class="page-top-bar">
+      <h1>All Recipes</h1>
+      <p>Every dish. Every mood.</p>
+    </div>
+
+    <div class="section">
+
+      <!-- Filters -->
+      <div class="filter-box">
+        <div class="filter-row">
+          <span class="filter-label">Category:</span>
+          <button class="chip active" data-cat="All" onclick="setFilter('cat', 'All', this)">All</button>
+          <button class="chip" data-cat="Veg" onclick="setFilter('cat', 'Veg', this)">Veg</button>
+          <button class="chip" data-cat="Non-Veg" onclick="setFilter('cat', 'Non-Veg', this)">Non-Veg</button>
+          <button class="chip" data-cat="Snacks" onclick="setFilter('cat', 'Snacks', this)">Snacks</button>
+          <button class="chip" data-cat="Desserts" onclick="setFilter('cat', 'Desserts', this)">Desserts</button>
+          <button class="chip" data-cat="Breakfast" onclick="setFilter('cat', 'Breakfast', this)">Breakfast</button>
+          <button class="chip" data-cat="Drinks" onclick="setFilter('cat', 'Drinks', this)">Drinks</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">Difficulty:</span>
+          <button class="chip active" data-diff="All" onclick="setFilter('diff', 'All', this)">All</button>
+          <button class="chip" data-diff="Easy" onclick="setFilter('diff', 'Easy', this)">Easy</button>
+          <button class="chip" data-diff="Medium" onclick="setFilter('diff', 'Medium', this)">Medium</button>
+          <button class="chip" data-diff="Hard" onclick="setFilter('diff', 'Hard', this)">Hard</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">Time:</span>
+          <button class="chip active" data-time="All" onclick="setFilter('time', 'All', this)">All</button>
+          <button class="chip" data-time="quick" onclick="setFilter('time', 'quick', this)">Under 20 min</button>
+          <button class="chip" data-time="medium" onclick="setFilter('time', 'medium', this)">21 to 40 min</button>
+          <button class="chip" data-time="long" onclick="setFilter('time', 'long', this)">Over 40 min</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">Search:</span>
+          <input type="text" id="recipeSearch" placeholder="Search recipes..." oninput="applyFilters()" />
+        </div>
+      </div>
+
+      <p id="resultsCount"></p>
+      <div class="recipe-grid" id="allRecipesGrid"></div>
+    </div>
+
+  </div>
+
+  <!-- ===== SINGLE RECIPE PAGE ===== -->
+  <div id="page-recipe-detail" class="page">
+    <div id="recipeDetailContent"></div>
+  </div>
+
+  <!-- ===== ABOUT PAGE ===== -->
+  <div id="page-about" class="page">
+
+    <div class="page-top-bar">
+      <h1>About The Sanji</h1>
+    </div>
+
+    <div class="section">
+      <div class="about-box">
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>The Sanji is inspired from a pirate named Black Leg Sanji who had bounty over a billion berries from The Great Pirate Era. From his passion towards cooking and his love for women made him find the All Blue and The Chef of the King of the Pirates. This website is made for ladies to access their favorite recipes and for the students who are far from home.</p>
+          <p>The makers of the website — Srirag Sarma, Tapasya, and Charan — who collaborated to design and build this website "The Sanji" as part of our shared interest. Our goal was to create a website that can reach out to people who came far away from their home to pursue their career but faltered to due their neglection on health. The nostalgia they get from their home hits harder. Observing the life of these people inspired us to make the website that could reach out to people who can cook whenever and wherever they want breaking the barriers of the internet. This is the inspiration that made "The Sanji".</p>
+          <h2>What we offer</h2>
+          <ul class="about-list">
+            <li>- Recipes from South India</li>
+            <li>- Filter by category and difficulty</li>
+            <li>- Step by step cooking instructions</li>
+            <li>- Mobile friendly design</li>
+            <li>- Easy search feature</li>
+          </ul>
+        </div>
+        <div class="about-image">
+          <img src="thesanji.jpeg" alt="Cooking" />
+          <div class="about-badge">500+ Recipes</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== CONTACT PAGE ===== -->
+  <div id="page-contact" class="page">
+
+    <div class="page-top-bar">
+      <h1>Contact Us</h1>
+      <p>We would love to hear from you.</p>
+    </div>
+
+    <div class="section">
+      <div class="contact-box">
+
+        <div class="contact-info">
+          <h2>Get in Touch</h2>
+          <p>Have a recipe suggestion or feedback? Send us a message.</p>
+          <p>📍 Based in Amrita, serving the All Blue</p>
+          <p>📧 thesanji.chef@gmail.com</p>
+          <p>📸 @thesanji_chef on Instagram</p>
+        </div>
+
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="cName">Your Name</label>
+            <input type="text" id="cName" placeholder="Enter your name" />
+          </div>
+          <div class="form-group">
+            <label for="cEmail">Email Address</label>
+            <input type="email" id="cEmail" placeholder="Enter your email" />
+          </div>
+          <div class="form-group">
+            <label for="cMsg">Message</label>
+            <textarea id="cMsg" rows="5" placeholder="Write your message here..."></textarea>
+          </div>
+          <button class="submit-btn" onclick="submitContact()">Send Message</button>
+          <p id="contactSuccess" style="display:none; color: #4ade80; margin-top: 12px;">
+            Message sent! We will get back to you soon.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-logo">🍛 The Sanji</p>
+      <div class="footer-links">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('recipes')">Recipes</a>
+        <a href="#" onclick="showPage('about')">About</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
+      </div>
+      <p class="footer-copy">2025 The Sanji. Made with ❤️ and a lot of spice.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
